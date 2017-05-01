@@ -45,7 +45,7 @@ void main(int argc, char** argv)
                 //TODO: print all non-hidden files in specified filename
                 strcpy(pathname, argv[1]);
                 currDIR = opendir(pathname);
-                while((dir_dirent = readdir(currentDIR))!=NULL){
+                while((dir_dirent = readdir(currDIR))!=NULL){
                     if(dir_dirent->d_name[0] != '.')
                     {
                        fprintf(stdout, "%s\n", dir_dirent->d_name); 
@@ -59,13 +59,13 @@ void main(int argc, char** argv)
             if(mode == 'i')
             {
                 //TODO: show information at specified pathname
-                strcpy(pathname, arg[2]);
+                strcpy(pathname, argv[2]);
                 currDIR = opendir(pathname);
             }
             else if(mode == 'h')
             {
                 //TODO: show hidden files in specified path
-                strcpy(pathname, arg[2]);
+                strcpy(pathname, argv[2]);
                 currDIR = opendir(pathname);
                 while((dir_dirent =readdir(currDIR))!=NULL)
                 {

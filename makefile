@@ -15,3 +15,5 @@ list.o: list.c
 	gcc -c list.c
 create.o: create.c
 	gcc -c create.c
+clean:
+	rm *.o

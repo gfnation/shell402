@@ -10,7 +10,7 @@
 
 void main(int argc, char** argv)
 {
-    char pathname[];
+    char * pathname = malloc(sizeof(char) *100);
     char mode;
     DIR * currDIR;
     struct dirent * dir_dirent;

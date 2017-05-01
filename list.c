@@ -2,10 +2,18 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <dirent.h>
+
 void main(int argc, char** argv)
 {
     char * pathname;
     char mode;
+    DIR * currDIR;
+    struct dirent * dir_dirent;
     //make sure correct number of command line arguments
     if(argc >0 && argc <=3)
     {
@@ -16,16 +24,33 @@ void main(int argc, char** argv)
             {
                 //TODO: information of current path
                 pathname = ".";
+                currDIR = opendir(pathname);
+                
             }
             else if(mode =='h')
             {
                 //TODO: show hidden files in current path
                 pathname = ".";
+                currDIR = opendir(pathname);
+                while((dir_dirent =readdir(currDIR))!=NULL)
+                {
+                    if(dir_dirent->d_name[0] == '.')
+                    {
+                        fprintf(stdout, "%s\n", dir_dirent->d_name);
+                    }
+                }
             }
             else
             {
                 //TODO: print all non-hidden files in specified filename
                 strcpy(pathname, argv[1]);
+                currDIR = opendir(pathname);
+                while((dir_dirent = readdir(currentDIR))!=NULL){
+                    if(dir_dirent->d_name[0] != '.')
+                    {
+                       fprintf(stdout, "%s\n", dir_dirent->d_name); 
+                    }
+                }
             }
         }
         else if(argc == 3)
@@ -35,15 +60,24 @@ void main(int argc, char** argv)
             {
                 //TODO: show information at specified pathname
                 strcpy(pathname, arg[2]);
+                currDIR = opendir(pathname);
             }
             else if(mode == 'h')
             {
                 //TODO: show hidden files in specified path
                 strcpy(pathname, arg[2]);
+                currDIR = opendir(pathname);
+                while((dir_dirent =readdir(currDIR))!=NULL)
+                {
+                    if(dir_dirent->d_name[0] == '.')
+                    {
+                        fprintf(stdout, "%s\n", dir_dirent->d_name);
+                    }
+                }
             }
             else
             {
-                //Shouldn't come here. Chose a worng mode
+                //Shouldn't come here. Chose a wrong mode
                 fprintf(stderr, "The list mode must be <-i> or <-h>");
                 exit(1);
             }
@@ -52,6 +86,18 @@ void main(int argc, char** argv)
         {
             //only one option with 1 argc. Print non-hidden files in current directory
             pathname=".";
+            currDIR = opendir(pathname);
+            while((dir_dirent = readdir(currentDIR))!=NULL)
+            {
+                    if(dir_dirent->d_name[0] != '.')
+                    {
+                       fprintf(stdout, "%s\n", dir_dirent->d_name); 
+                    }
+                }
         }
+    }
+    else
+    {
+        fprintf(stderr, "The wrong number of arguments are inc")
     }
 }

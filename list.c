@@ -87,7 +87,7 @@ void main(int argc, char** argv)
             //only one option with 1 argc. Print non-hidden files in current directory
             pathname=".";
             currDIR = opendir(pathname);
-            while((dir_dirent = readdir(currentDIR))!=NULL)
+            while((dir_dirent = readdir(currDIR))!=NULL)
             {
                     if(dir_dirent->d_name[0] != '.')
                     {
@@ -98,6 +98,6 @@ void main(int argc, char** argv)
     }
     else
     {
-        fprintf(stderr, "The wrong number of arguments are inc")
+        fprintf(stderr, "The wrong number of arguments are inc");
     }
 }

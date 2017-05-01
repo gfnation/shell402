@@ -10,7 +10,7 @@
 
 void main(int argc, char** argv)
 {
-    char * pathname;
+    char pathname[];
     char mode;
     DIR * currDIR;
     struct dirent * dir_dirent;

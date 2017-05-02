@@ -38,7 +38,7 @@ void main(int argc, char** argv)
                         fprintf(stderr,"Couldn't get stat on file");
                         exit(1);
                     }
-                    fprintf(stdout, "%s\t Size:%d\t Inode:%d\t Permissions:%d\n", dir_dirent->d_name, info.st_size,  info.st_ino, info.st_mode);
+                    fprintf(stdout, "%s Size:%d Inode:%d Permissions:%d\n", dir_dirent->d_name, info.st_size,  info.st_ino, info.st_mode);
                 }
             }
             else if(mode =='h')
@@ -80,6 +80,19 @@ void main(int argc, char** argv)
                     exit(1);
                 }
                 currDIR = opendir(pathname);
+                while((dir_dirent = readdir(currDIR)) != NULL)
+                {
+                    char * filepath = malloc(sizeof(char)* strlen(dir_dirent->d_name) + (sizeof(char) * strlen(pathname) + 2));
+                    strcat(filepath, pathname);
+                    strcat(filepath,"/" );
+                    strcat(filepath, dir_dirent->d_name);
+                    if(stat(filepath, &info) == -1)
+                    {
+                        fprintf(stderr,"Couldn't get stat on file");
+                        exit(1);
+                    }
+                    fprintf(stdout, "%s Size:%d Inode:%d Permissions:%d\n", dir_dirent->d_name, info.st_size,  info.st_ino, info.st_mode);
+                }
             }
             else if(mode == 'h')
             {

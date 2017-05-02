@@ -48,10 +48,10 @@ int main(int argc, char ** argv)
             char * newname = malloc(sizeof(char) * strlen(argv[3]));
             strcpy(oldname, argv[2]);
             strcpy(newname, argv[3]);
-            int link;
+            int linky;
             if(argv[1][1] == 'h')
             {
-                if((link = link(oldname, newname) == -1)
+                if((linky = link(oldname, newname) == -1)
                 {
                     fprintf(stderr, "The paths couldn't be linked.\n");
                     exit(1);
@@ -59,7 +59,7 @@ int main(int argc, char ** argv)
             }
             else if(argv[1][1] == 's')
             {
-                if((link = symlink(oldname, newname))== -1)
+                if((linky = symlink(oldname, newname))== -1)
                 {
                     fprintf(stderr, "Couldn't make the symbolic link\n");
                     exit(1);

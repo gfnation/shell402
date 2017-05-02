@@ -51,7 +51,7 @@ int main(int argc, char ** argv)
             int linky;
             if(argv[1][1] == 'h')
             {
-                if((linky = link(oldname, newname) == -1)
+                if((linky = link(oldname, newname)) == -1)
                 {
                     fprintf(stderr, "The paths couldn't be linked.\n");
                     exit(1);

@@ -29,7 +29,7 @@ void main(int argc, char** argv)
                 currDIR = opendir(pathname);
                 while((dir_dirent = readdir(currDIR)) != NULL)
                 {
-                    char * filepath = malloc(sizeof(char)* strlen(dir_dirent->d_name) + (sizeof(char) * strlen(pathname) + 2);
+                    char * filepath = malloc(sizeof(char)* strlen(dir_dirent->d_name) + (sizeof(char) * strlen(pathname) + 2));
                     strcat(filepath, pathname);
                     strcat(filepath,"/" );
                     strcat(filepath, dir_dirent->d_name);

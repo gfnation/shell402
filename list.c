@@ -10,10 +10,11 @@
 
 void main(int argc, char** argv)
 {
-    char * pathname = malloc(sizeof(char) *100);
+    char * pathname = malloc(sizeof(char) *1000);
     char mode;
     DIR * currDIR;
     struct dirent * dir_dirent;
+    struct stat info;
     //make sure correct number of command line arguments
     if(argc >0 && argc <=3)
     {
@@ -24,8 +25,16 @@ void main(int argc, char** argv)
             {
                 //TODO: information of current path
                 pathname = ".";
+                if(stat(pathname, &info) == -1)
+                {
+                    fprintf(stderr,"Couldn't get stat on file");
+                    exit(1);
+                }
                 currDIR = opendir(pathname);
-                
+                while((dir_dirent = readdir(currDIR)) != NULL)
+                {
+                fprintf(stdout, "%s\t Size:%d\t Inode:%d\t Permissions:%d\n", dir_dirent->d_name, info.st_size,  info.st_ino, info.st_mode);
+                }
             }
             else if(mode =='h')
             {
@@ -60,6 +69,11 @@ void main(int argc, char** argv)
             {
                 //TODO: show information at specified pathname
                 strcpy(pathname, argv[2]);
+                if(stat(pathname, &info) == -1)
+                {
+                    fprintf(stderr,"Couldn't get stat on file");
+                    exit(1);
+                }
                 currDIR = opendir(pathname);
             }
             else if(mode == 'h')

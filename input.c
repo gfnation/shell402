@@ -12,13 +12,15 @@ char* getLine(FILE* stream)
 {
     
     char * buffer = malloc(sizeof(char) * 256);
+    char curr;
 
-    int count =0;
-    while(; buffer[count] != '\n'; count ++)
+    int loopy =0;
+    fscanf("%c", &curr);
+    while(curr = '\n')
     {
-        buffer[count] = stream[count];
+        buffer[loopy++] = curr;
+        fscanf("%c", %curr);
     }
-    buffer[count] = '\0';
-
+    buffer[loopy] = curr;
     return buffer;
 }

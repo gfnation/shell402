@@ -29,6 +29,7 @@ void main(int argc, char** argv)
         {
             printf("shell402>>");
             fgets(buffer, 100, stdin);
+            executeLine(buffer);
        }
         else
         {
@@ -43,6 +44,7 @@ void main(int argc, char** argv)
             while(!feof(tempfile))
             {
                 buffer = getLine(tempfile);
+                executeLine(buffer);
             }
         }
     }
@@ -68,7 +70,7 @@ void executeLine(char * line)
     }
     else if(strcmp(command, "create") == 0)
     {
-        
+
     }
     else if(strcmp(command, "list") ==0)
     {

@@ -11,13 +11,13 @@
 
 void wd()
 {
-    fprintf(stdout, "%s", getcwd(NULL, PATH_MAX +1));
+    fprintf(stdout, "%s", getcwd(".", PATH_MAX +1));
 }
 
 void chwd(char* path)
 {
     int success =0;
-    if(success = chdir(path) == 0)
+    if((success = chdir(path)) == -1)
     {
         fprintf(stderr, "The directory couldn't be opened");
         exit(1);

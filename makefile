@@ -1,6 +1,6 @@
 all: shell402 create list
-shell402: shell402.o shellFunctions.o input.o
-	gcc shell402.o shellFunctions.o input.o -o shell402
+shell402: shell402.o shellFunctions.o input.o token.o
+	gcc shell402.o shellFunctions.o input.o token.o -o shell402
 list: list.o
 	gcc list.o -o list
 create: create.o
@@ -15,5 +15,7 @@ list.o: list.c
 	gcc -c list.c
 create.o: create.c
 	gcc -c create.c
+token.o: token.c
+	gcc -c token.c
 clean:
 	rm *.o

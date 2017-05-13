@@ -15,11 +15,11 @@ char* getLine(FILE* stream)
     char curr;
 
     int loopy =0;
-    fscanf("%c", &curr);
+    fscanf(stream, "%c", &curr);
     while(curr = '\n')
     {
         buffer[loopy++] = curr;
-        fscanf("%c", %curr);
+        fscanf(stream, "%c", %curr);
     }
     buffer[loopy] = curr;
     return buffer;

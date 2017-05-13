@@ -8,6 +8,8 @@
 #include <fcntl.h>
 #include <dirent.h>
 
+#define LARGE_COMM 7
+
 char* getLine(FILE* stream);
 
 void main(int argc, char** argv)
@@ -46,3 +48,35 @@ void main(int argc, char** argv)
     }
 }
 
+void executeLine(char * line)
+{
+    char * command = malloc(sizeof(char) * LARGE_COMM);
+    command = getTokened(line, ' ');
+    if((strcmp(command, "wd"))== 0)
+    {
+        wd();
+    }
+    else if(strcmp(command, "chwd") == 0)
+    {
+        char * pathname = malloc(sizeof(char) * 1000);
+        pathname = getTokened(getRemaining(line, command), ' ');
+        chwd(pathname);
+    }
+    else if(strcmp(command, "quit") ==0)
+    {
+        quit();
+    }
+    else if(strcmp(command, "create") == 0)
+    {
+        
+    }
+    else if(strcmp(command, "list") ==0)
+    {
+
+    }
+    else
+    {
+        fprintf(stderr, "The command entered is not a valid option.\n");
+        exit(1);
+    }
+}

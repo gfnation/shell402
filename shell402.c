@@ -27,6 +27,7 @@ void main(int argc, char** argv)
         {
             printf("shell402>>");
             scanf("%34[^\n]", buffer);
+            printf("Got it");
        }
         else
         {

@@ -10,7 +10,7 @@
 
 void main(int argc, char** argv)
 {
-    int exit =0;
+    int exit1 =0;
     char buffer[256];
     if(argc > 2)
     {
@@ -18,27 +18,26 @@ void main(int argc, char** argv)
         exit(1);
     }
 
-    while(exit == 0)
+    while(exit1 == 0)
     {
         if(argc=1)
         {
             scanf("%s", buffer);
-            char * command = malloc(sizeof(char) * 8);
-            
-
-        }
+       }
         else
         {
             FILE * tempfile;
-            char filename[];
+            char filename[] = malloc(sizeof(char) * strlen(argv[1]));
             strcpy(filename, argv[1]);
             if(tempfile = fopen(filename, "r") == NULL)
             {
                 fprintf(stderr, "File could not be opened.\n");
                 exit(1);
             }
-
-
+            while(!feof(tempfile))
+            {
+                buffer = getLine(tempfile);
+            }
         }
 
     }

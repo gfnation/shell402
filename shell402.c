@@ -13,7 +13,7 @@ char* getLine(FILE* stream);
 void main(int argc, char** argv)
 {
     int exit1 =0;
-    char buffer[256];
+    char * buffer;
     if(argc > 2)
     {
         fprintf(stderr, "Wrong number of commands.\n");

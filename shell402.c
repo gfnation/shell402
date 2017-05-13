@@ -28,7 +28,7 @@ void main(int argc, char** argv)
             printf("shell402>>");
             //scanf("%[^\n]", buffer);
             fgets(buffer, 100, stdin);
-            printf("Got it");
+            printf("%s", buffer);
        }
         else
         {

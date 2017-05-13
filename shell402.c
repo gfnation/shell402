@@ -27,7 +27,7 @@ void main(int argc, char** argv)
         {
             printf("shell402>>");
             fgets(buffer, 100, stdin);
-            char * testy = malloc(sizeof(char) * len(buffer));
+            char * testy = malloc(sizeof(char) * strlen(buffer));
             testy = getLine(stdin);
             printf("%s", testy);
        }

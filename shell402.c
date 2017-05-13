@@ -29,7 +29,7 @@ void main(int argc, char** argv)
         {
             printf("shell402>>");
             fgets(buffer, 100, stdin);
-            exit1 = executeLine(buffer);
+            executeLine(buffer);
        }
         else
         {
@@ -44,7 +44,7 @@ void main(int argc, char** argv)
             while(!feof(tempfile))
             {
                 buffer = getLine(tempfile);
-                exit1 = executeLine(buffer);
+                executeLine(buffer);
             }
         }
     }

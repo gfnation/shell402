@@ -52,7 +52,7 @@ void main(int argc, char** argv)
 
 void executeLine(char * line)
 {
-    char * command = malloc(sizeof(char) * LARGE_COMM);
+    char * command = malloc(sizeof(char) * 1000);
     command = getTokened(line, ' ');
     if((strcmp(command, "wd"))== 0)
     {

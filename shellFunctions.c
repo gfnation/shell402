@@ -11,7 +11,9 @@
 
 void wd()
 {
-    fprintf(stdout, "%s", getcwd(".", PATH_MAX +1));
+    char * buff = malloc(sizeof(char) * (PATH_MAX +1));
+
+    fprintf(stdout, "%s", getcwd(NULL, PATH_MAX +1));
 }
 
 void chwd(char* path)

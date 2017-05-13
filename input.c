@@ -19,7 +19,7 @@ char* getLine(FILE* stream)
     while(curr = '\n')
     {
         buffer[loopy++] = curr;
-        fscanf(stream, "%c", %curr);
+        fscanf(stream, "%c", &curr);
     }
     buffer[loopy] = curr;
     return buffer;

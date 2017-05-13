@@ -56,6 +56,7 @@ void executeLine(char * line)
     command = getTokened(line, ' ');
     if((strcmp(command, "wd"))== 0)
     {
+        printf("Current directory : ");
         wd();
     }
     else if(strcmp(command, "chwd") == 0)

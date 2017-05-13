@@ -11,7 +11,7 @@
 char* getLine(FILE* stream)
 {
     
-    char * buffer = malloc(sizeof(FILE) * strlen(stream));
+    char * buffer = malloc(sizeof(char) * 256);
 
     int count =0;
     while(; buffer[count] != '\n'; count ++)

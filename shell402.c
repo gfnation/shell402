@@ -23,7 +23,7 @@ void main(int argc, char** argv)
 
     while(exit1 == 0)
     {
-        if(argc=1)
+        if(argc==1)
         {
             scanf("%s", buffer);
        }

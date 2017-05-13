@@ -13,7 +13,8 @@ char* getLine(FILE* stream);
 void main(int argc, char** argv)
 {
     int exit1 =0;
-    char * buffer;
+    //CHANGE AFTER TESTING; TOO LARGE
+    char * buffer = malloc(sizeof(char) * 1000);
     if(argc > 2)
     {
         fprintf(stderr, "Wrong number of commands.\n");

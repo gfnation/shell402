@@ -29,7 +29,7 @@ void main(int argc, char** argv)
         {
             printf("shell402>>");
             fgets(buffer, 100, stdin);
-            executeLine(buffer);
+            exit1 = executeLine(buffer);
        }
         else
         {
@@ -44,42 +44,32 @@ void main(int argc, char** argv)
             while(!feof(tempfile))
             {
                 buffer = getLine(tempfile);
-                executeLine(buffer);
+                exit1 = executeLine(buffer);
             }
         }
     }
 }
 
-void executeLine(char * line)
+int executeLine(char * line)
 {
-    char * command = malloc(sizeof(char) * 1000);
-    command = getTokened(line, ' ');
-    if((strcmp(command, "wd"))== 0)
+    char * token;
+    token = strtok(line, " ");
+    if(token == NULL)
     {
-        printf("Current directory : ");
-        wd();
-    }
-    else if(strcmp(command, "chwd") == 0)
-    {
-        char * pathname = malloc(sizeof(char) * 1000);
-        pathname = getTokened(getRemaining(line, command), ' ');
-        chwd(pathname);
-    }
-    else if(strcmp(command, "quit") ==0)
-    {
-        quit();
-    }
-    else if(strcmp(command, "create") == 0)
-    {
-
-    }
-    else if(strcmp(command, "list") ==0)
-    {
-
-    }
-    else
-    {
-        fprintf(stderr, "The command entered is not a valid option.\n");
+        printf("SHITS BROKEN");
         exit(1);
+    }
+    if(strcmp(line, "quit") == 0)
+    {
+        return quit();
+    }
+    else if(strcmp(line, "wd") ==0)
+    {
+        wd();
+        return 0;
+    }
+    else if(strcmp(line, "list") == 0)
+    {
+        execlp("list", NULL);
     }
 }

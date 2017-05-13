@@ -8,6 +8,8 @@
 #include <fcntl.h>
 #include <dirent.h>
 
+char* getLine(FILE* stream);
+
 void main(int argc, char** argv)
 {
     int exit1 =0;
@@ -27,7 +29,7 @@ void main(int argc, char** argv)
         else
         {
             FILE * tempfile;
-            char filename[] = malloc(sizeof(char) * strlen(argv[1]));
+            char * filename = malloc(sizeof(char) * strlen(argv[1]));
             strcpy(filename, argv[1]);
             if(tempfile = fopen(filename, "r") == NULL)
             {

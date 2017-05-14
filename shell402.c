@@ -24,7 +24,7 @@ void main(int argc, char** argv)
         {
             printf("shell402>>");
             fgets(buffer, 100, stdin);
-            buffer[strlen(buffer)] = '\0';
+            buffer[strlen(buffer) -1] = '\0';
             executeLine(buffer);
        }
         else

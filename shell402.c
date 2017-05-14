@@ -24,6 +24,7 @@ void main(int argc, char** argv)
         {
             printf("shell402>>");
             fgets(buffer, 100, stdin);
+            buffer[strlen(buffer)] = '\0';
             executeLine(buffer);
        }
         else
@@ -55,7 +56,7 @@ void executeLine(char * line)
         exit(1);
     }
     printf("%s %d", token,strcmp(token, "quit\n") );
-    if(strcmp(token, "quit\n") == 0)
+    if(strcmp(token, "quit") == 0)
     {
         quit();
     }

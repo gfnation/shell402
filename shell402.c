@@ -62,7 +62,7 @@ void executeLine(char * line)
     printf("%s", token);
     if(strcmp(token, "quit") == 0)
     {
-        return quit();
+        quit();
     }
     else if(strcmp(token, "wd") ==0)
     {

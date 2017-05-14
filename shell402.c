@@ -9,6 +9,7 @@
 #include <dirent.h>
 
 #define LARGE_COMM 7
+void quit();
 
 char* getLine(FILE* stream);
 

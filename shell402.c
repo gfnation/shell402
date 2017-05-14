@@ -55,7 +55,7 @@ void executeLine(char * line)
         exit(1);
     }
     printf("%s %d", token,strcmp(token, "quit\n") );
-    if(strcmp(token, "quit") == 0)
+    if(strcmp(token, "quit\n") == 0)
     {
         quit();
     }

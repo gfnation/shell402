@@ -59,7 +59,7 @@ void executeLine(char * line)
         printf("SHITS BROKEN");
         exit(1);
     }
-    printf("%s %d", token,strcmp(token, "quit") );
+    printf("%s %d", token,strcmp(token, "quit\n") );
     if(strcmp(token, "quit") == 0)
     {
         quit();

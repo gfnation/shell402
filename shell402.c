@@ -4,6 +4,9 @@
 #include "input.h"
 #define LARGE_COMM 7
 
+
+void executeLine(char * line);
+
 void main(int argc, char** argv)
 {
     int exit1 =0;

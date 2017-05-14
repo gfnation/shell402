@@ -1,10 +1,8 @@
 #include "libraries.h"
 #include "shellFunctions.h"
 #include "token.h"
+#include "input.h"
 #define LARGE_COMM 7
-
-
-char* getLine(FILE* stream);
 
 void main(int argc, char** argv)
 {

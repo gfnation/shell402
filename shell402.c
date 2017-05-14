@@ -65,6 +65,7 @@ void executeLine(char * line)
     }
     else if(strcmp(line, "list") == 0)
     {
+        fork();
         execlp("list", "list", NULL);
     }
     else

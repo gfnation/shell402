@@ -1,15 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <dirent.h>
-
+#include "libraries.h"
+#include "shellFunctions.h"
+#include "token.h"
 #define LARGE_COMM 7
-void quit();
+
 
 char* getLine(FILE* stream);
 

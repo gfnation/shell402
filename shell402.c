@@ -50,7 +50,7 @@ void main(int argc, char** argv)
     }
 }
 
-int executeLine(char * line)
+void executeLine(char * line)
 {
     char * token;
     token = strtok(line, " ");
@@ -59,14 +59,14 @@ int executeLine(char * line)
         printf("SHITS BROKEN");
         exit(1);
     }
-    if(strcmp(line, "quit") == 0)
+    printf("%s", token);
+    if(strcmp(token, "quit") == 0)
     {
         return quit();
     }
-    else if(strcmp(line, "wd") ==0)
+    else if(strcmp(token, "wd") ==0)
     {
         wd();
-        return 0;
     }
     else if(strcmp(line, "list") == 0)
     {

@@ -26,8 +26,8 @@ void chwd(char* path)
     }
 }
 
-int quit()
+void quit()
 {
    fprintf(stdout, "Goodbye\n");
-   return 1; 
+   exit(0);
 }

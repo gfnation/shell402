@@ -55,7 +55,6 @@ void executeLine(char * line)
         printf("SHITS BROKEN");
         exit(1);
     }
-    printf("%s %d", token,strcmp(token, "quit\n") );
     if(strcmp(token, "quit") == 0)
     {
         quit();
@@ -66,7 +65,7 @@ void executeLine(char * line)
     }
     else if(strcmp(line, "list") == 0)
     {
-        execlp("list", NULL);
+        execlp("list", "list", NULL);
     }
     else
     {

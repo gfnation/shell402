@@ -67,4 +67,9 @@ void executeLine(char * line)
     {
         execlp("list", NULL);
     }
+    else
+    {
+        fprintf(stderr, "%s", "Command incorrect");
+        exit(1);
+    }
 }

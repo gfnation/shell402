@@ -4,7 +4,7 @@ void wd()
 {
     char * buff = malloc(sizeof(char) * (PATH_MAX +1));
     char * line = getcwd(buff, PATH_MAX+1);
-    fprintf(stdout, "%s", line);
+    fprintf(stdout, "%s\n", line);
 }
 
 void chwd(char* path)

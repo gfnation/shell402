@@ -8,3 +8,4 @@
 #include <fcntl.h>
 #include <dirent.h>
 #include <limits.h>
+#include <sys/wait.h>

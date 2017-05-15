@@ -83,6 +83,7 @@ void executeLine(char * line, char * listPath, char * createPath)
         }
         else
         {
+            wait(0);
             if(child == (pid_t)(-1))
             {
                 fprintf(stderr, "The fork failed");
@@ -92,7 +93,7 @@ void executeLine(char * line, char * listPath, char * createPath)
     }
     else
     {
-        fprintf(stderr, "%s", "Command incorrect");
+        fprintf(stderr, "%s\n", "Command incorrect");
         exit(1);
     }
 }

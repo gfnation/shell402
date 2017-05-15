@@ -14,7 +14,7 @@ void main(int argc, char** argv)
 
     if((getcwd(listPath, PATH_MAX) == NULL) && (getcwd(createPath, PATH_MAX) == NULL))
     {
-        fprintf("%s", "Cannot get current working directory\n");
+        fprintf(stderr,"%s", "Cannot get current working directory\n");
         exit(1);
     } 
     strcat(listPath, "/list");
@@ -60,6 +60,11 @@ void main(int argc, char** argv)
 void executeLine(char * line, char * listPath, char * createPath)
 {
     char * token;
+    char * firstToken = malloc(sizeof(char) * PATH_MAX + 1);
+    char * secondToken = malloc(sizeof(char) * PATH_MAX + 1);
+    char * thirdToken = malloc(sizeof(char) * PATH_MAX +1);
+    char * forthToken = malloc(sizeof(char) * PATH_MAX +1);
+
     token = strtok(line, " ");
     if(token == NULL)
     {
@@ -93,7 +98,63 @@ void executeLine(char * line, char * listPath, char * createPath)
     }
     else
     {
+       
+        strcpy(firstToken, token);
+        if((token = strtok(NULL, " ") == NULL))
+        {
         fprintf(stderr, "%s\n", "Command incorrect");
         exit(1);
+        }
+        else
+        {
+
+           strcpy(secondToken, token);
+
+           if(strcmp(firstToken, "list") == 0)
+           {
+
+               if((token = strtok(NULL," ")) == NULL)
+               {
+                   execlp(listPath, "list", secondToken, NULL);
+               }
+               else
+               {
+                   strcpy(thirdToken, token);
+                   execlp(listPath, "list", secondToken, thirdToken, NULL);
+               }
+           }
+           else if(strcmp(firstToken, "create")== NULL)
+           {
+               strcpy(secondToken, token);
+
+               if((token = strtok(NULL, " "))== NULL)
+               {
+                   execlp(createPath, "create", secondToken, NULL);
+               }
+               else
+               {
+                   strcpy(thirdToken, token);
+                   if((token = strtok(NULL, " "))== NULL)
+                   {
+                       execlp(createPath, "create", secondToken, thirdToken, NULL);
+                   }
+                   else
+                   {
+                       strcpy(forthToken, token);
+                       execlp(createPath, "create", secondToken, thirdToken, forthToken, NULL);
+                   }
+               }        
+            }
+            else if((strcmp(firstToken, "chwd")) == NULL)
+            {
+                strcpy(secondToken, token);
+                chwd(secondToken);
+            }
+            else
+            {
+                fprintf(stderr, "%s", "You have entered an invalid command");
+                exit(1);
+            }
+        }
     }
 }

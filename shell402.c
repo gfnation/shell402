@@ -5,7 +5,7 @@
 #define LARGE_COMM 7
 
 
-void executeLine(char * line);
+void executeLine(char * line, char * listPath, char * createPath);
 
 void main(int argc, char** argv)
 {
@@ -36,7 +36,7 @@ void main(int argc, char** argv)
             printf("shell402>>");
             fgets(buffer, 100, stdin);
             buffer[strlen(buffer) -1] = '\0';
-            executeLine(buffer);
+            executeLine(buffer, listPath, createPath);
        }
         else
         {
@@ -51,13 +51,13 @@ void main(int argc, char** argv)
             while(!feof(tempfile))
             {
                 buffer = getLine(tempfile);
-                executeLine(buffer);
+                executeLine(buffer, listPath, createPath);
             }
         }
     }
 }
 
-void executeLine(char * line)
+void executeLine(char * line, char * listPath, char * createPath)
 {
     char * token;
     token = strtok(line, " ");

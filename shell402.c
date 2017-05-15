@@ -77,7 +77,7 @@ void executeLine(char * line)
     else if(strcmp(line, "list") == 0)
     {
         pid_t child;
-        if((child = fork() == 0)
+        if((child = fork() == 0))
         {
         execlp(listPath, "list", NULL);
         }

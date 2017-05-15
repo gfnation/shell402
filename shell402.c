@@ -9,9 +9,20 @@ void executeLine(char * line);
 
 void main(int argc, char** argv)
 {
+    char * listPath = malloc(sizeof(char) * (PATH_MAX + 6));
+    char * createPath = malloc(sizeof(char) * (PATH_MAX + 8));
+
+    if((getcwd(listPath, PATH_MAX) == NULL) && (getcwd(createPath, PATH_MAX) == NULL))
+    {
+        fprintf("%s", "Cannot get current working directory\n");
+        exit(1);
+    } 
+    strcat(listPath, "/list");
+    strcat(listPath, "/create");
+
     int exit1 =0;
     //CHANGE AFTER TESTING; TOO LARGE
-    char * buffer = malloc(sizeof(char) * 1000);
+    char * buffer = malloc(sizeof(char) * (PATH_MAX + 1));
     if(argc > 2)
     {
         fprintf(stderr, "Wrong number of commands.\n");
@@ -65,9 +76,19 @@ void executeLine(char * line)
     }
     else if(strcmp(line, "list") == 0)
     {
-        fork();
-        wait(0);
-        execlp("list", "list", NULL);
+        pid_t child;
+        if((child = fork() == 0)
+        {
+        execlp(listPath, "list", NULL);
+        }
+        else
+        {
+            if(child == (pid_t)(-1))
+            {
+                fprintf(stderr, "The fork failed");
+                exit(1);
+            }
+        }
     }
     else
     {
